@@ -370,6 +370,15 @@ export default function getRouter(basePath = '/') {
         },
       },
     ],
+    scrollBehavior(_to, _from, savedPosition) {
+      // If the savedPosition is available, use it
+      if (savedPosition) {
+        return savedPosition;
+      } else {
+        // Scroll to the top of the page when navigating
+        return { top: 0 };
+      }
+    },
   });
 
   router.beforeEach((to, from, next) => {
